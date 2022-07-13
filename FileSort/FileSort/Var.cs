@@ -7,10 +7,11 @@ namespace FileSort
     public static class Var
     {
         //Main Vars
-        public static string ScanDirectory = File.ReadAllText("ScanDirectory.ss");
-        public static string EndDirectory = File.ReadAllText("EndDirectory.ss");
-        public static string ExtensionDirectory = @"Extensions";
-        public static string FileForStaticFolders = @"StaticDirectories.ss";
+        public static string insLoc = File.ReadAllText("insLoc.ss");
+        public static string ScanDirectory = File.ReadAllText(insLoc + "ScanDirectory.ss");
+        public static string EndDirectory = File.ReadAllText(insLoc + "EndDirectory.ss");
+        public static string ExtensionDirectory = insLoc + "Extensions";
+        public static string FileForStaticFolders = insLoc + "StaticDirectories.ss";
 
 
         //Arrays

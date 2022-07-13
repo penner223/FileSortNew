@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Globalization;
+using Microsoft.Win32;
 
 namespace FileSort
 {
@@ -33,6 +34,7 @@ namespace FileSort
             Var.Initialize();
             Timer_Check.Start();
             timer_SortByMonths.Start();
+            SetStartup();
         }
 
         private void Timer_Check_Tick(object sender, EventArgs e)
@@ -60,6 +62,16 @@ namespace FileSort
                     MoveFileToDate(File);
 
             }
+        }
+
+        private void SetStartup()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            string SftName = Path.GetDirectoryName(Var.ScanDirectory);
+
+            if (rk.GetValue(SftName) != null)
+                rk.SetValue(SftName, Application.ExecutablePath);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
