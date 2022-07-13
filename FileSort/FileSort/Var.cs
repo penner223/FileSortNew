@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.IO;
+using System;
 
 
 namespace FileSort
@@ -7,7 +8,7 @@ namespace FileSort
     public static class Var
     {
         //Main Vars
-        public static string insLoc = File.ReadAllText("insLoc.ss");
+        public static string insLoc = DefineInsLoc();
         public static string ScanDirectory = File.ReadAllText(insLoc + "ScanDirectory.ss");
         public static string EndDirectory = File.ReadAllText(insLoc + "EndDirectory.ss");
         public static string ExtensionDirectory = insLoc + "Extensions";
@@ -19,6 +20,13 @@ namespace FileSort
         public static string[] StaticDirectories;
         public static string[] ExtensionFolderNames;
 
+        public static string DefineInsLoc()
+        {
+            string AppName = System.AppDomain.CurrentDomain.FriendlyName;
+            AppName = AppName.Replace(".exe", "");
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            return File.ReadAllText(path + @"\SortingApps\" + AppName + ".ss");
+        }
 
         public static void Initialize()
         {
