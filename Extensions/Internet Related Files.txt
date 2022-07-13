@@ -39,3 +39,4 @@
 .xsd
 .xsl
 .xslt
+.txt
