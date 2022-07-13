@@ -69,9 +69,8 @@ namespace FileSort
             RegistryKey rk = Registry.CurrentUser.OpenSubKey
                 ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             string SftName = Path.GetDirectoryName(Var.ScanDirectory);
-
-            if (rk.GetValue(SftName) != null)
-                rk.SetValue(SftName, Application.ExecutablePath);
+    
+            rk.SetValue(SftName, Application.ExecutablePath);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
